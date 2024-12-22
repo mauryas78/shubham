@@ -36,3 +36,18 @@ This project is a **Personalized Book Recommendation API** that delivers intelli
 - Delivers a **personalized user experience** with minimal latency.
 - Demonstrates modern NLP techniques and cloud deployment practices.
 - Built with a **scalable, maintainable, and production-ready** architecture.
+
+## project structure :
+```plaintext
+app/
+├── __init__.py
+├── main.py
+├── redis_client.py
+├── openai_service.py
+├── models.py
+└── endpoints/
+    ├── recommendations.py
+    ├── preferences.py
+    ├── history.py
+    └── search.py
+requirements.txt
