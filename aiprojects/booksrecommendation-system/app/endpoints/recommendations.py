@@ -36,7 +36,6 @@ def insert_recommedations(data:list) -> list:
 @router.post("/")
 async def get_recommendations(email:str,genre: str='',author:str='',credentials: HTTPAuthorizationCredentials = Depends(authenticate)):
     try:
-        print('chech try')
         history=[]
         book_history=[]
         redis_connection = RedisClient()
@@ -54,7 +53,6 @@ async def get_recommendations(email:str,genre: str='',author:str='',credentials:
         temp_list=user_dict[email]['recommendations']+(recommendations_ids)
         re_uniquelist=get_unique_values(temp_list)
         user_dict[email]['recommendations']=re_uniquelist
-        print('chech2')
         redis_connection.upsert_value(USER,json.dumps(user_dict))
     
     except Exception as e:

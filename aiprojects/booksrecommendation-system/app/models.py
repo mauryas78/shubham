@@ -16,11 +16,9 @@ class User(BaseModel):
     recommendations : List[int]=[]
 
 def get_unique_values(input_list):
-    print(input_list)
     seen = set()
     unique_list = []
     for item in input_list:
-        print(type(item))
         if item not in seen:
             unique_list.append(item)
             seen.add(item)

@@ -2,3 +2,4 @@
 data/
 redis/
 test/
+.env

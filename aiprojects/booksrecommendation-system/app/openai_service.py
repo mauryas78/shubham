@@ -1,8 +1,12 @@
 from openai import OpenAI
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 def get_book_recommendations(genre: str='',author:str='', history: list=[]):
     client = OpenAI(
-    api_key="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"
+    api_key=os.getenv('openai_key')
     )
     prompt = f"""
     You are an expert book reviewer and literary critic tasked with recommending 5 books.
