@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from app.redis_client import RedisClient,BOOKS,USER,BOOKID
-from app.models import Books
+from app.models import Books, get_unique_values
 from fastapi import Depends
 from fastapi.security import HTTPAuthorizationCredentials
 from app.authentication import authenticate
@@ -19,12 +19,15 @@ async def update_preferences(email: str, title: str,author: str='',genre:str='',
             books_dict[book_id]=book_obj.dict()
             redis_connection.upsert_value(BOOKS,json.dumps(books_dict))
             user_dict[email]['books'].append(book_id)
+            uniquelist=get_unique_values(user_dict[email]['books'])
+            user_dict[email]['books']=uniquelist
             redis_connection.upsert_value(USER,json.dumps(user_dict))
-
         else:
             for id, book in books_dict.items():
                 if book['title'] == title:
                     user_dict[email]['books'].append(int(id))
+                    uniquelist=get_unique_values(user_dict[email]['books'])
+                    user_dict[email]['books']=uniquelist
                     redis_connection.upsert_value(USER,json.dumps(user_dict))
 
         return{"message":"successfully added the book preferences"}

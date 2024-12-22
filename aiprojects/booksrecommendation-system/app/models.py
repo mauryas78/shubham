@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, validator
 from typing import List
 
 # Model for Book Recommendations Response
@@ -15,6 +15,13 @@ class User(BaseModel):
     books : List[int]=[]
     recommendations : List[int]=[]
 
-# Model for User History
-# class UserHistory(BaseModel):
-#     history: List[str]
+def get_unique_values(input_list):
+    print(input_list)
+    seen = set()
+    unique_list = []
+    for item in input_list:
+        print(type(item))
+        if item not in seen:
+            unique_list.append(item)
+            seen.add(item)
+    return unique_list
