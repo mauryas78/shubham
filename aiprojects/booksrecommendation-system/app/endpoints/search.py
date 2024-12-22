@@ -1,18 +1,15 @@
 from fastapi import APIRouter
 from app.redis_client import get_redis_client
-
+from fastapi import Depends
+from fastapi.security import HTTPAuthorizationCredentials
+from app.authentication import authenticate
 router = APIRouter()
 
-@router.get("/")
-async def search_books(title: str = None, author: str = None):
-    redis_client = get_redis_client()
+@router.get("/{title}")
+async def search_books(title: str):
     search_key = "books:search_index"
     
     if title:
         books = redis_client.smembers(f"{search_key}:title:{title}")
-    elif author:
-        books = redis_client.smembers(f"{search_key}:author:{author}")
-    else:
-        books = redis_client.smembers(search_key)
 
     return {"books": list(books)}
