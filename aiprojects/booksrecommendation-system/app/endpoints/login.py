@@ -19,22 +19,17 @@ def inallemails():
     return []
 
 @router.get("/{email}")
-async def create_user(email: str,password:str):
+async def login(email: str,password:str):
     try:
         redis_connection=RedisClient()
-        print(email,password)
         if is_valid_gmail(email):
             user_dict=json.loads(redis_connection.get_value(USER))
-            if email not in user_dict.keys():
-                user_obj=User(user_password=password)
-                print(user_obj)
-                user_dict[email]=user_obj.dict()
-                redis_connection.upsert_value(USER,json.dumps(user_dict))
-                return {"message": "User created successfully ","key":KEY,"NOTE" : "add the authorization key in authorize tab on the right top corner "}
+            if email in user_dict.keys():
+                return {"message": "Welcom back","key":KEY,"NOTE" : "add the authorization key in authorize tab on the right top corner "}
             else:
-                print("already a user login")
+                return{"message":"please create a user to login"}
         else:
-            return {"message": "User not created .","NOTE" : "already used email OR invalid mail"}
+            return {"message": "please check you email","NOTE" : "not a user OR invalid mail"}
     except Exception as e:
         print(e)
     # Store or update the user's reading history in Redis

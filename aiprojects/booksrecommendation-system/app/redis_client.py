@@ -5,6 +5,10 @@ import redis
 
 # def get_redis_client():
 #     return redis.Redis(connection_pool=pool)
+KEY= 'shubhammourya'
+USER='user'
+BOOKS='books'
+BOOKID='book_id'
 
 class RedisClient:
     def __init__(self, 
