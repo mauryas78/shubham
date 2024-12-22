@@ -2,7 +2,7 @@
 
 ### Software Developer | Backend Developer | AI Enthusiast  
 
-Hi! I’m Shubham Mourya, a passionate Software Developer specializing in backend systems, generative AI, and scalable architectures. With over two years of experience in product-based startups, I bring a strong technical skill set and a problem-solving mindset to every project I work on.  
+Hi! I’m Shubham Mourya, a passionate Software Developer specializing in backend systems, generative AI, and scalable architectures. With over four plus years of experience in product-based startups, I bring a strong technical skill set and a problem-solving mindset to every project I work on.  
 
 ---
 
