@@ -7,15 +7,16 @@ This project is a **Personalized Book Recommendation API** that delivers intelli
 ### Backend Development:
 - **Framework**: Built with [FastAPI](https://fastapi.tiangolo.com/) for speed, data validation, and scalability.
 - **Endpoints**:
-  - `/recommendations`: Fetches personalized book recommendations using OpenAI.
+  - `/user/create`: Create user with passowrd.
+  - `/user/login`: Login user with passowrd.
   - `/user/preferences`: Stores or updates user preferences (e.g., genres, authors).
-  - `/user/history`: Accepts and updates the user's recent reading history.
+  - `/recommendations`: Fetches personalized book recommendations using OpenAI.
   - `/books/search`: Enables searching for books by title, author, or genre.
 
 ### Database:
 - **Redis** is used for:
   - Storing user preferences and reading history.
-  - Caching OpenAI-generated recommendations for faster response times.
+  - Caching OpenAI-generated recommendations for faster response times
   - Indexing book metadata for efficient search operations.
 
 ### OpenAI Integration:
@@ -46,8 +47,9 @@ app/
 ├── openai_service.py
 ├── models.py
 └── endpoints/
-    ├── recommendations.py
+    ├── login.py
+    ├── create.py
     ├── preferences.py
-    ├── history.py
+    ├── recommendations.py
     └── search.py
 requirements.txt
